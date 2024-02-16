@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void edit_line(char* buffer, int current_line) {
     for(int i=0; i < current_line; i++) {
@@ -22,4 +23,7 @@ void main(int argc, char** argv) {
     int current_line = 0;
     scanf("%d", &current_line);
     edit_line(buffer, current_line);
+    file = fopen(argv[1], "w");
+    fwrite(buffer, strlen(buffer), 1, file);
+    fclose(file);
 }
