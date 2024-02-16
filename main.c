@@ -1,5 +1,17 @@
 #include <stdio.h>
 
+void edit_line(char* buffer, int current_line) {
+    for(int i=0; i < current_line; i++) {
+        buffer = strchr(buffer, '\n') + 1;
+    }
+
+    char* line_end = strchr(buffer, '\n');
+    char saved[1024] = {0};
+    strcpy(saved, line_end);
+    scanf("%s", buffer);
+    strcpy(buffer + strlen(buffer), saved);
+}
+
 void main(int argc, char** argv) {
     FILE* file = fopen(argv[1], "r");
     char buffer[1024] = {0};
